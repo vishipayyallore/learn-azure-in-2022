@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AADDemo1", "AADDemo1\AADDemo1.csproj", "{0A834614-CBC2-46C7-8AA2-FB02FDA1FC91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UseIden.DemoAPI", "UseIden.DemoAPI\UseIden.DemoAPI.csproj", "{DCED8C38-02CC-41A6-BC20-79B24E83E2D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A834614-CBC2-46C7-8AA2-FB02FDA1FC91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A834614-CBC2-46C7-8AA2-FB02FDA1FC91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A834614-CBC2-46C7-8AA2-FB02FDA1FC91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A834614-CBC2-46C7-8AA2-FB02FDA1FC91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCED8C38-02CC-41A6-BC20-79B24E83E2D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCED8C38-02CC-41A6-BC20-79B24E83E2D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCED8C38-02CC-41A6-BC20-79B24E83E2D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCED8C38-02CC-41A6-BC20-79B24E83E2D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {77D1DC46-826B-4F8D-9BC7-BC1CAA140E18}
+	EndGlobalSection
+EndGlobal
