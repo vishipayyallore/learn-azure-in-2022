@@ -5,8 +5,12 @@ using Microsoft.Identity.Web.UI;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+string[] scope = new string[] { "api://29d520e2-320b-4f91-93a8-ce19478a2499/WebApiAccess" };
+
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzADWebDemo"));
+    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzADWebDemo"))
+    .EnableTokenAcquisitionToCallDownstreamApi(scope)
+    .AddInMemoryTokenCaches();
 
 builder.Services.AddAuthorization(options =>
 {
