@@ -6,7 +6,7 @@ using static System.Console;
 
 IConfiguration _configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
-    .AddUserSecrets("12345678-AZ204-AuthDemos")
+    .AddUserSecrets("12345678-AZ204-All-Demos")
     .Build();
 
 // Reference: https://docs.microsoft.com/en-us/graph/sdks/choose-authentication-providers?tabs=CS
@@ -18,11 +18,11 @@ var scopes = new[] { "https://graph.microsoft.com/.default" };
 
 // Multi-tenant apps can use "common",
 // single-tenant apps must use the tenant ID from the Azure portal
-var tenantId = _configuration["AzADDemo1:TenantId"];
+var tenantId = _configuration["AzADGraphApiDemo:TenantId"];
 
 // Values from app registration
-var clientId = _configuration["AzADDemo1:ClientId"];
-var clientSecret = _configuration["AzADDemo1:ClientSecret"];
+var clientId = _configuration["AzADGraphApiDemo:ClientId"];
+var clientSecret = _configuration["AzADGraphApiDemo:ClientSecret"];
 
 // using Azure.Identity;
 var options = new TokenCredentialOptions
@@ -35,17 +35,26 @@ var clientSecretCredential = new ClientSecretCredential(tenantId, clientId, clie
 
 var graphClient = new GraphServiceClient(clientSecretCredential, scopes);
 
-//var user = await graphClient.Me
-//    .Request()
-//    .GetAsync();
-
 var users = await graphClient.Users
     .Request()
     .GetAsync();
 
+ForegroundColor = ConsoleColor.Yellow;
+WriteLine("\nUsers Information");
 foreach (var user in users)
 {
     WriteLine($"Display Name: {user.DisplayName} | Given Name: {user.GivenName}");
 }
 
+var groups = await graphClient.Groups
+    .Request()
+    .GetAsync();
+ForegroundColor = ConsoleColor.Green;
+WriteLine("\nGroups Information");
+foreach (var group in groups)
+{
+    WriteLine($"Display Name: {group.DisplayName} | Description: {group.Description}");
+}
+
+ResetColor();
 WriteLine("\n\nPress any key ...");
