@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "ca16f6d9-50e4-4b50-80f8-7dee400c7577",
+		"name": "Az-204",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "185209"
+	},
+	"item": [
+		{
+			"name": "APIM",
+			"item": [
+				{
+					"name": "https://az204-apim-demo-001.azure-api.net/echo/resource?param1=sample",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "5f78258e16da4fdf853c07210a3e7355",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Trace",
+								"value": "True",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://az204-apim-demo-001.azure-api.net/echo/resource?param1=sample",
+							"protocol": "https",
+							"host": [
+								"az204-apim-demo-001",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"echo",
+								"resource"
+							],
+							"query": [
+								{
+									"key": "param1",
+									"value": "sample"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://az204-apim-demo-001.azure-api.net/eshop/products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "5f78258e16da4fdf853c07210a3e7355",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://az204-apim-demo-001.azure-api.net/eshop/products",
+							"protocol": "https",
+							"host": [
+								"az204-apim-demo-001",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"eshop",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://az204-apim-demo-001.azure-api.net/apitest/xml?=",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "5f78258e16da4fdf853c07210a3e7355",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://az204-apim-demo-001.azure-api.net/apitest/xml?=",
+							"protocol": "https",
+							"host": [
+								"az204-apim-demo-001",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"apitest",
+								"xml"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GraphAPI",
+			"item": [
+				{
+					"name": "Retrieve Access Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var res = pm.response.json();\r",
+									"pm.environment.set('access_token', res.access_token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "https://graph.microsoft.com/.default",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://login.microsoftonline.com/830179c1-a5df-40d2-befe-2420e3cfbb2e/oauth2/v2.0/token",
+							"protocol": "https",
+							"host": [
+								"login",
+								"microsoftonline",
+								"com"
+							],
+							"path": [
+								"830179c1-a5df-40d2-befe-2420e3cfbb2e",
+								"oauth2",
+								"v2.0",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /v1.0/users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://graph.microsoft.com/v1.0/users",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"microsoft",
+								"com"
+							],
+							"path": [
+								"v1.0",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /v1.0/groups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://graph.microsoft.com/v1.0/groups",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"microsoft",
+								"com"
+							],
+							"path": [
+								"v1.0",
+								"groups"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
