@@ -18,11 +18,11 @@ var scopes = new[] { "https://graph.microsoft.com/.default" };
 
 // Multi-tenant apps can use "common",
 // single-tenant apps must use the tenant ID from the Azure portal
-var tenantId = _configuration["AzADDemo1:TenantId"];
+var tenantId = _configuration["AzADGraphApiDemo:TenantId"];
 
 // Values from app registration
-var clientId = _configuration["AzADDemo1:ClientId"];
-var clientSecret = _configuration["AzADDemo1:ClientSecret"];
+var clientId = _configuration["AzADGraphApiDemo:ClientId"];
+var clientSecret = _configuration["AzADGraphApiDemo:ClientSecret"];
 
 // using Azure.Identity;
 var options = new TokenCredentialOptions
