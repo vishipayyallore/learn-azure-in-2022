@@ -6,7 +6,7 @@ using static System.Console;
 
 IConfiguration _configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
-    .AddUserSecrets("12345678-AZ204-AuthDemos")
+    .AddUserSecrets("12345678-AZ204-All-Demos")
     .Build();
 
 // Reference: https://docs.microsoft.com/en-us/graph/sdks/choose-authentication-providers?tabs=CS

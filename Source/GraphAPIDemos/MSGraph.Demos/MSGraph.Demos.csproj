@@ -5,7 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>12345678-AZ204-AuthDemos</UserSecretsId>
+    <UserSecretsId>12345678-AZ204-All-Demos</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
