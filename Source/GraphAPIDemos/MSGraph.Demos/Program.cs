@@ -35,17 +35,26 @@ var clientSecretCredential = new ClientSecretCredential(tenantId, clientId, clie
 
 var graphClient = new GraphServiceClient(clientSecretCredential, scopes);
 
-//var user = await graphClient.Me
-//    .Request()
-//    .GetAsync();
-
 var users = await graphClient.Users
     .Request()
     .GetAsync();
 
+ForegroundColor = ConsoleColor.Yellow;
+WriteLine("\nUsers Information");
 foreach (var user in users)
 {
     WriteLine($"Display Name: {user.DisplayName} | Given Name: {user.GivenName}");
 }
 
+var groups = await graphClient.Groups
+    .Request()
+    .GetAsync();
+ForegroundColor = ConsoleColor.Green;
+WriteLine("\nGroups Information");
+foreach (var group in groups)
+{
+    WriteLine($"Display Name: {group.DisplayName} | Description: {group.Description}");
+}
+
+ResetColor();
 WriteLine("\n\nPress any key ...");
