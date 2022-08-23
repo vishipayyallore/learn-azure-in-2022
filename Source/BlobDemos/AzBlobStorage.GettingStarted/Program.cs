@@ -14,23 +14,23 @@ var deleteFile = false;
 var deleteBlobContainer = false;
 
 // Copy the connection string from the portal in the variable below.
-string storageConnectionString = _configuration["AzStorage:BlobStorageConnectionString"];
-BlobServiceClient blobServiceClient = new(storageConnectionString);
+//string storageConnectionString = _configuration["AzStorage:BlobStorageConnectionString"];
+//BlobServiceClient blobServiceClient = new(storageConnectionString);
 
 // AD App with RBAC
-//var tenantId = _configuration["AzADStBlobDemo:TenantId"];
-//var clientId = _configuration["AzADStBlobDemo:ClientId"];
-//var clientSecret = _configuration["AzADStBlobDemo:ClientSecret"];
+var tenantId = _configuration["AzADStBlobDemo:TenantId"];
+var clientId = _configuration["AzADStBlobDemo:ClientId"];
+var clientSecret = _configuration["AzADStBlobDemo:ClientSecret"];
 
-//// using Azure.Identity;
-//var options = new TokenCredentialOptions
-//{
-//    AuthorityHost = AzureAuthorityHosts.AzurePublicCloud
-//};
+// using Azure.Identity;
+var options = new TokenCredentialOptions
+{
+    AuthorityHost = AzureAuthorityHosts.AzurePublicCloud
+};
 
-//var clientSecretCredential = new ClientSecretCredential(tenantId, clientId, clientSecret, options);
-//var blobUri = "https://staz204authdev001.blob.core.windows.net";
-//BlobServiceClient blobServiceClient = new(new Uri(blobUri), clientSecretCredential);
+var clientSecretCredential = new ClientSecretCredential(tenantId, clientId, clientSecret, options);
+var blobUri = "https://staz204authdev001.blob.core.windows.net";
+BlobServiceClient blobServiceClient = new(new Uri(blobUri), clientSecretCredential);
 
 string containerName = _configuration["AzStorage:BlobContainerName"];
 var blobContainerClient = await BlobGettingStartedHelper.CreateContainerAsync(blobServiceClient, containerName);
